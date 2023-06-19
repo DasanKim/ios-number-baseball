@@ -1,6 +1,5 @@
 
-
-### 숫자야구 프로젝트 저장소
+### ⚾️ 숫자야구 프로젝트 저장소
 
 ## 목차
 [1. 제목](#1-제목)  
@@ -22,7 +21,7 @@
 ## 3. 팀원
 |redmango|DasanKim|
 |:------:|:------:|
-|<img src="./redmango.png" width="100" height="100"/>|<img src="./dasan.png" width="100" height="100"/>|
+|<img src="./images/redmango.png" width="200" height="200"/>|<img src="./images/dasan.png" width="200" height="200"/>|
 |Driver, Navigator|    Driver, Navigator|
 
 ## 4. 타임라인
@@ -40,7 +39,7 @@
 <summary>STEP 2 순서도</summary>
 <div markdown="1">
 
-<img src="./STEP-2-flowchart.jpg" width="1000" height="1600"/>
+<img src="./images/STEP-2-flowchart.jpg" width="800"/>
 
 </div>
 </details>
@@ -49,57 +48,57 @@
 ## 6. 실행 화면(기능 설명)
 | 구분 | 비정상 입력 | 사용자 승리 |컴퓨터 승리 |
 | :--------: | :--------: | :--------: | :--------: |
-| 실행 화면 |<img src="./menuError.png" width="500" height="100"/><img src="./gameInputError.png" width="500" height="350"/> | <img src="./userWin.png" width="1000" height="450"/> |  <img src="./computerWin.png" width="1000" height="450"/> |
+| 실행 화면 |<img src="./images/menuError.png" width="500" height="100"/><img src="./images/gameInputError.png" width="500" height="350"/> | <img src="./images/userWin.png" width="1000" height="450"/> |  <img src="./images/computerWin.png" width="1000" height="450"/> |
 | 화면 설명 | 공백, 3개 미만의 숫자, 1~9이외의 숫자, 띄어쓰기 미준수, 중복숫자등 잘못된 입력일 경우 '입력이 잘못되었습니다' 출력| 사용자가 9번 이내에 정답을 맞추면 userWin 출력 | 사용자가 9번 이내에 정답을 맞추지 못하면 computerWin 출력 |
 
 
 ## 7. 트러블 슈팅
 ### 1. 짝프로그래밍
-#### 🟧 문제점
+#### ⚠️ 문제점
 - 짝프로그래밍이 처음이라 처음엔 `10~15분씩` 돌아가면서 하였더니 commit 단위가 애매해졌다.
 -- 따라서 `기능별`로 돌아가면서 짝프로그래밍을 하였다.
 -- 짝프로그래밍을 할 때, 시간과 기능별 중 어떤 것을 기준으로 하는 것이 좋을지 고민이 되었다.
 
-#### 🟩 해결책
+#### ✅ 해결책
 - 브로디와 로웬의 조언으로 짝프로그래밍 **시간을 늘려가면서 commit 단위를 맞춰보기로** 하였다.
 
 ### 2. 네이밍 고민
 
 대부분의 함수와 변수 네이밍에서 고민을 하였으나 가장 오랜시간 고민했던 것들을 아래와 같다.
-#### 🟧 문제점 1
+#### ⚠️ 문제점 1
 - compare 함수의 전달인자 이름을 and, to, with 중에 어떤 전치사를 사용할지 고민되었다.
-#### 🟩 해결책 1
+#### ✅ 해결책 1
 - **compare(A ,and B)**
 A와 B가 동등한 상태에서 비교된다는 점을 감안하여 and 선택하였다.
-#### 🟧 문제점 2
+#### ⚠️ 문제점 2
 - computerRandomNumbers vs. hiddenRandomNumbers
 - "유저가 숨겨진 번호를 맞춘다는 행동"에 초점을 두어 `hiddenRandomNumbers`으로 정하였으나, 의미가 모호하다는 피드백을 받았다.
-#### 🟩 해결책 2
+#### ✅ 해결책 2
 - “유저의 행동”이라는 1인칭 시점보다 **“게임을 누구와 하느냐”** 로 3인칭 시점에서 생각해보았을 때 유저와 컴퓨터의 대결이므로, computerRandomNumbers가 hiddenRandomNumbers보다 직관적인 것 같다는 결론을 내려 `computerRandomNumbers`로 수정하였다.
 
 ### 3. String to Int
-#### 🟧 문제점
+#### ⚠️ 문제점
 - String에서 Int로 형변환시 String값이 Int로 변환될 수도, 안될 수도 있어 Ints (공백 및 숫자가 아닌 값이 있을 수 있으므로) 옵셔널 처리를 해야하므로 처음엔 아래와 같이 처리하였다. 하지만 for문이여서 map 고차함수로 코드를 좀 더 간결하게 할 수 있을 것 같은데... 라는 고민이 계속 남았다.
 ``` swift
 for input in userStringInputs {
         userIntInputs.append(Int(input) ?? 0)
 }
 ```
-#### 🟩 해결책 
+#### ✅ 해결책 
 - 한참 나중에서야 수소문 끝에 알게된 `compactMap`. 이렇게 편리한 함수가 있었다니...?
 ```swift
 validUserInputs = userInput.split(separator: " ").compactMap{ Int($0) }
 ```
 
 ### 4. 코딩 컨벤션
-#### 🟧 문제점
+#### ⚠️ 문제점
 - 아래와 같이 우리도 모르게 타입 어노테이션과 타입 추론을 혼용하여 사용였다.
 ``` swift
 let gameResult = compare(hiddenRandomNumbers, and: userRandomNumbers) //타입추론
 let strikeCount: Int = gameResult.strikeCount
 let ballCount: Int = gameResult.ballCount
 ```
-#### 🟩 해결책
+#### ✅ 해결책
 - 둘 중에 타입 어노테이션을 사용하자는 약속을 만들고, 약속한 코딩 컨벤션을 지켜서 통일성을 높이기로 하였다.
 ``` swift
 let gameResult: (strikeCount: Int, ballCount: Int) = compare(hiddenRandomNumbers, and: userRandomNumbers)
